@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  # Differentiates this from the dev app
+  name: root-app-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # This should be the same repository URL
+    repoURL: 'https://github.com/Extraordinarytechy/idp-k8s-manifests.git' # IMPORTANT: Change this!
+    targetRevision: HEAD
+    # The key difference: this points to the production-specific Kustomize overlay
+    path: apps/idp-flagship-app/overlays/prod
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

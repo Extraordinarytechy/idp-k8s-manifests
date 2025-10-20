@@ -1,0 +1,27 @@
+# This is the base deployment. Overlays will patch it.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: idp-flagship-app
+  labels:
+    app: idp-flagship-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: idp-flagship-app
+  template:
+    metadata:
+      labels:
+        app: idp-flagship-app
+    spec:
+      containers:
+      - name: idp-flagship-app
+        # This image will be replaced by the patch in the overlay
+        image: placeholder
+        ports:
+        - containerPort: 80
+        env:
+        # The overlay will set the correct environment name
+        - name: ENVIRONMENT
+          value: "unknown"

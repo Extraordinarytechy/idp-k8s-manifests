@@ -1,0 +1,15 @@
+# This patch sets the prod-specific ENVIRONMENT variable and the image tag.
+#  CI/CD pipeline will replace the image URI below.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: idp-flagship-app
+spec:
+  template:
+    spec:
+      containers:
+      - name: idp-flagship-app
+        image: <PROD_ECR_IMAGE_URI> # CI will replace this placeholder
+        env:
+        - name: ENVIRONMENT
+          value: "prod"
