@@ -9,7 +9,7 @@ spec:
     spec:
       containers:
       - name: idp-flagship-app
-        image: <DEV_ECR_IMAGE_URI> # CI will replace this placeholder
+        image:  # CI will replace this placeholder
         env:
         - name: ENVIRONMENT
           value: "dev"
