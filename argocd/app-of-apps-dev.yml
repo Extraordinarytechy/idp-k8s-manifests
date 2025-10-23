@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/Extraordinarytechy/idp-k8s-manifests.git' # IMPORTANT: Change this!
+    repoURL: 'https://github.com/Extraordinarytechy/idp-k8s-manifests.git' 
     targetRevision: HEAD
     path: apps/idp-flagship-app/overlays/dev
   destination:
